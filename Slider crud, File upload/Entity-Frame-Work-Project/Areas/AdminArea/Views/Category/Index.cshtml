@@ -1,0 +1,51 @@
+﻿@model IEnumerable<Category>
+
+
+@{
+    ViewData["Title"] = "Category";
+}
+
+<div class="table-responsive pt-3 ">
+    <div class="create-btn my-5">
+        <a asp-controller="Category" asp-action="Create" class="btn btn-success">Create</a>
+    </div>
+    <table class="table table-bordered">
+
+        <thead>
+            <tr>
+                <th>
+                    Name
+                </th>
+                <th>
+                    Settings
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var category in Model)
+            {
+                <tr>
+                    <td>
+                        @category.Name
+                    </td>
+                    <td>
+                        <a asp-action="Detail" asp-route-id="@category.Id" class="btn btn-info"><i class="mdi mdi-information mx-0"></i></a>
+                        <a asp-action="Update" asp-route-id="@category.Id" class="btn btn-primary"><i class="mdi mdi-table-edit"></i></a>
+                        <form style="display: inline-block" asp-action="Delete" asp-route-id="@category.Id" method="post">
+                            <button class="btn btn-danger"><i class="mdi mdi-delete-forever"></i></button>
+                        </form>
+                    </td>
+                </tr>
+            }
+
+
+
+
+
+
+        </tbody>
+    </table>
+</div>
+
+
+
